@@ -15,10 +15,11 @@
 
 :root {
     /* Brand colors */
-    --primary: #8b5cf6;
-    --primary-light: #a78bfa;
+    --primary: #9333ea;
+    --primary-light: #c084fc;
     --primary-dark: #6d28d9;
     --accent: #22d3ee;
+    --accent-warm: #f0abfc;
 
     /* Surfaces */
     --bg: #0a0a12;
@@ -34,8 +35,8 @@
     --text-faint: #6b6b80;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
-    --gradient-glow: radial-gradient(circle, rgba(139,92,246,0.35) 0%, rgba(139,92,246,0) 70%);
+    --gradient-primary: linear-gradient(135deg, #9333ea 0%, #c084fc 55%, #22d3ee 100%);
+    --gradient-glow: radial-gradient(circle, rgba(147,51,234,0.35) 0%, rgba(147,51,234,0) 70%);
 
     /* Shape / spacing */
     --radius-sm: 10px;
@@ -138,14 +139,32 @@ button {
 }
 
 .btn-primary {
+    position: relative;
+    overflow: hidden;
     background: var(--gradient-primary);
     color: #fff;
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+    box-shadow: 0 8px 24px rgba(147, 51, 234, 0.4);
+}
+
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 12px 34px rgba(147, 51, 234, 0.6);
+}
+
+.btn-primary:hover::after {
+    left: 130%;
 }
 
 .btn-secondary {
@@ -534,20 +553,20 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 64px;
-    height: 64px;
-    margin: -32px;
+    width: 68px;
+    height: 68px;
+    margin: -34px;
     border-radius: 50%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 12px;
+    background: #ffffff;
+    border: 3px solid var(--surface-2);
+    padding: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 1px rgba(139,92,246,0.15);
     transform-origin: 230px 230px;
     animation: orbitRotate 22s linear infinite;
-    transition: box-shadow var(--transition), border-color var(--transition);
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
 }
 
 .skill-orbit-item img {
@@ -566,8 +585,9 @@ button {
 }
 
 .skill-orbit-item.skill-hover {
-    border-color: var(--primary-light);
-    box-shadow: 0 0 26px rgba(139, 92, 246, 0.6);
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.75), 0 0 0 1px rgba(34,211,238,0.4);
+    transform: scale(1.12);
     z-index: 3;
 }
 
