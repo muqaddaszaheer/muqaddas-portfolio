@@ -484,6 +484,22 @@ button {
     gap: 16px;
 }
 
+.certifications-more {
+    text-align: center;
+    margin-top: 36px;
+}
+
+.certifications-more a {
+    font-weight: 600;
+    color: var(--primary-light);
+    font-size: 14.5px;
+    transition: color var(--transition);
+}
+
+.certifications-more a:hover {
+    color: var(--accent);
+}
+
 /* ========================================================
    Stats
    ======================================================== */
@@ -739,6 +755,20 @@ button {
 
 .project-link:hover {
     gap: 10px;
+}
+
+.project-link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.project-link-secondary {
+    color: var(--text-muted);
+}
+
+.project-link-secondary:hover {
+    color: var(--accent);
 }
 
 /* ========================================================
