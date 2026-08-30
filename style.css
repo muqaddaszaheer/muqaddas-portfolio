@@ -1,1409 +1,1558 @@
-/* ========================================================
-   Muqaddas Zaheer Ahmad — Portfolio
-   Professional Dark Theme Stylesheet
-   ======================================================== */
-
-/* ---------- Reset & Base ---------- */
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    /* Brand colors */
-    --primary: #9333ea;
-    --primary-light: #c084fc;
-    --primary-dark: #6d28d9;
-    --accent: #22d3ee;
-    --accent-warm: #f0abfc;
-
-    /* Surfaces */
-    --bg: #0a0a12;
-    --bg-alt: #0f0f1a;
-    --surface: #14141f;
-    --surface-2: #1b1b29;
-    --border: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(139, 92, 246, 0.35);
-
-    /* Text */
-    --text: #f4f4f7;
-    --text-muted: #a3a3b8;
-    --text-faint: #6b6b80;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #9333ea 0%, #c084fc 55%, #22d3ee 100%);
-    --gradient-glow: radial-gradient(circle, rgba(147,51,234,0.35) 0%, rgba(147,51,234,0) 70%);
-
-    /* Shape / spacing */
-    --radius-sm: 10px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --container-width: 1160px;
-
-    /* Motion */
-    --transition: 0.3s ease;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Segoe UI", "Poppins", system-ui, -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/* Twinkling starfield, layered behind every section */
-
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    background-repeat: repeat;
-    background-image:
-        radial-gradient(1.5px 1.5px at 20px 30px, #ffffff 100%, transparent 0),
-        radial-gradient(1px 1px at 90px 120px, #ffffff 100%, transparent 0),
-        radial-gradient(1.5px 1.5px at 160px 60px, #ffffff 100%, transparent 0),
-        radial-gradient(1px 1px at 220px 180px, #ffffff 100%, transparent 0),
-        radial-gradient(1.5px 1.5px at 280px 20px, #ffffff 100%, transparent 0),
-        radial-gradient(1px 1px at 320px 140px, #ffffff 100%, transparent 0),
-        radial-gradient(1.5px 1.5px at 60px 200px, #ffffff 100%, transparent 0);
-    background-size: 360px 240px;
-    opacity: 0.5;
-    animation: twinkle 6s ease-in-out infinite alternate;
-}
-
-body::after {
-    background-size: 460px 300px;
-    background-position: 120px 60px;
-    opacity: 0.3;
-    animation-duration: 9s;
-    animation-direction: alternate-reverse;
-}
-
-@keyframes twinkle {
-    0% { opacity: 0.25; }
-    50% { opacity: 0.6; }
-    100% { opacity: 0.35; }
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-ul, ol {
-    list-style: none;
-}
-
-button {
-    font: inherit;
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: inherit;
-}
-
-.container {
-    width: 100%;
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-.section {
-    padding: 110px 0;
-    position: relative;
-}
-
-.section-heading {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto 60px;
-}
-
-.section-label {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--primary-light);
-    margin-bottom: 12px;
-}
-
-.section-heading h2 {
-    font-size: clamp(28px, 4vw, 40px);
-    font-weight: 800;
-    margin-bottom: 14px;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.section-heading p {
-    color: var(--text-muted);
-    font-size: 16px;
-}
-
-/* ---------- Buttons ---------- */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 30px;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 15px;
-    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-}
-
-.btn-primary {
-    position: relative;
-    overflow: hidden;
-    background: var(--gradient-primary);
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(147, 51, 234, 0.4);
-}
-
-.btn-primary::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -60%;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.45), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.6s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 34px rgba(147, 51, 234, 0.6);
-}
-
-.btn-primary:hover::after {
-    left: 130%;
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1.5px solid var(--border-strong);
-}
-
-.btn-secondary:hover {
-    background: rgba(139, 92, 246, 0.12);
-    transform: translateY(-3px);
-}
-
-/* ========================================================
-   Header / Navigation
-   ======================================================== */
-
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(10, 10, 18, 0.7);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 76px;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.logo-heart {
-    color: var(--primary-light);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 34px;
-}
-
-.nav-links a {
-    font-size: 14.5px;
-    font-weight: 500;
-    color: var(--text-muted);
-    position: relative;
-    padding: 6px 0;
-    transition: color var(--transition);
-}
-
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: width var(--transition);
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--text);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: transform var(--transition), opacity var(--transition);
-}
-
-.menu-toggle.active span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ========================================================
-   Hero Section
-   ======================================================== */
-
-.hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 140px 0 90px;
-    overflow: hidden;
-    background:
-        radial-gradient(ellipse 60% 50% at 80% 10%, rgba(34, 211, 238, 0.12), transparent),
-        radial-gradient(ellipse 60% 50% at 15% 85%, rgba(139, 92, 246, 0.16), transparent),
-        var(--bg);
-}
-
-.hero-glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.hero-glow-one {
-    width: 420px;
-    height: 420px;
-    top: -100px;
-    right: -80px;
-    background: rgba(139, 92, 246, 0.35);
-    animation: floatGlow 9s ease-in-out infinite;
-}
-
-.hero-glow-two {
-    width: 380px;
-    height: 380px;
-    bottom: -120px;
-    left: -100px;
-    background: rgba(34, 211, 238, 0.28);
-    animation: floatGlow 11s ease-in-out infinite reverse;
-}
-
-@keyframes floatGlow {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(30px, -20px) scale(1.1); }
-}
-
-.hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 46px 46px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 90%);
-    z-index: 0;
-}
-
-.hero-container {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.hero-image-wrapper {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    justify-self: center;
-}
-
-.hero-image-glow {
-    position: absolute;
-    inset: -25px;
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    filter: blur(30px);
-    opacity: 0.55;
-    animation: pulseGlow 4s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-    0%, 100% { opacity: 0.45; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.06); }
-}
-
-.hero-image-frame {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    padding: 6px;
-    background: var(--gradient-primary);
-    animation: spinBorder 8s linear infinite;
-}
-
-@keyframes spinBorder {
-    to { transform: rotate(360deg); }
-}
-
-.hero-image-frame .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid var(--bg);
-    background: var(--surface);
-}
-
-.hero-intro {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: rgba(34, 211, 238, 0.1);
-    border: 1px solid rgba(34, 211, 238, 0.3);
-    padding: 7px 16px;
-    border-radius: 999px;
-    margin-bottom: 20px;
-}
-
-.hero-content h1 {
-    font-size: clamp(34px, 5.5vw, 56px);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 14px;
-    background: linear-gradient(120deg, #ffffff 40%, var(--primary-light) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.hero-content h2 {
-    font-size: clamp(15px, 2vw, 19px);
-    font-weight: 600;
-    color: var(--text-muted);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 22px;
-}
-
-.hero-content h2 span {
-    color: var(--primary-light);
-}
-
-.hero-description {
-    color: var(--text-muted);
-    font-size: 16px;
-    max-width: 520px;
-    margin-bottom: 34px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.certifications-more {
-    text-align: center;
-    margin-top: 36px;
-}
-
-.certifications-more a {
-    font-weight: 600;
-    color: var(--primary-light);
-    font-size: 14.5px;
-    transition: color var(--transition);
-}
-
-.certifications-more a:hover {
-    color: var(--accent);
-}
-
-/* ========================================================
-   Stats
-   ======================================================== */
-
-.stats-section {
-    padding: 50px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--bg-alt);
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
-    text-align: center;
-}
-
-.stat-card strong {
-    display: block;
-    font-size: clamp(20px, 2.6vw, 28px);
-    font-weight: 800;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 6px;
-}
-
-.stat-card span {
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-/* ========================================================
-   About
-   ======================================================== */
-
-.about-card {
-    max-width: 780px;
-    margin: 0 auto;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 40px;
-}
-
-.about-card p {
-    color: var(--text-muted);
-    margin-bottom: 16px;
-}
-
-.about-card p:last-child {
-    margin-bottom: 0;
-}
-
-/* ========================================================
-   Skills — Rotating Orbit
-   ======================================================== */
-
-.skills-section {
-    background: var(--bg-alt);
-}
-
-.skills-orbit {
-    position: relative;
-    width: 460px;
-    height: 460px;
-    margin: 0 auto;
-    border-radius: 50%;
-    border: 1px dashed var(--border-strong);
-}
-
-.skills-orbit::before {
-    content: "";
-    position: absolute;
-    inset: 60px;
-    border-radius: 50%;
-    border: 1px dashed rgba(139, 92, 246, 0.18);
-}
-
-.skills-orbit-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 108px;
-    height: 108px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 20px;
-    color: #fff;
-    box-shadow: 0 0 50px rgba(139, 92, 246, 0.55);
-    z-index: 2;
-}
-
-/* Orbit ring: each icon rotates around the center via animation,
-   and counter-rotates itself so the icon artwork stays upright. */
-
-.skill-orbit-item {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 68px;
-    height: 68px;
-    margin: -34px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    overflow: visible;
-    transform-origin: 230px 230px;
-    animation: orbitRotate 22s linear infinite;
-    z-index: 2;
-}
-
-.skill-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 7px;
-    animation: counterRotate 22s linear infinite;
-}
-
-.skill-icon-badge {
-    width: 68px;
-    height: 68px;
-    border-radius: 16px;
-    background: #ffffff;
-    border: 3px solid var(--surface-2);
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 1px rgba(139,92,246,0.15);
-    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
-}
-
-.skill-icon-badge img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 6px;
-}
-
-.skill-label {
-    font-size: 11.5px;
-    font-weight: 700;
-    color: var(--text);
-    background: rgba(10, 10, 18, 0.75);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
-    letter-spacing: 0.2px;
-    transition: color var(--transition), border-color var(--transition), background var(--transition);
-}
-
-.skills-orbit.paused .skill-orbit-item,
-.skills-orbit.paused .skill-inner,
-.skill-orbit-item.skill-hover,
-.skill-orbit-item.skill-hover .skill-inner {
-    animation-play-state: paused;
-}
-
-.skill-orbit-item.skill-hover {
-    z-index: 4;
-}
-
-.skill-orbit-item.skill-hover .skill-icon-badge {
-    border-color: var(--accent);
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.75), 0 0 0 1px rgba(34,211,238,0.4);
-    transform: scale(1.12);
-}
-
-.skill-orbit-item.skill-hover .skill-label {
-    color: var(--accent);
-    border-color: var(--accent);
-    background: rgba(10, 10, 18, 0.9);
-}
-
-/* Distribute 9 icons evenly around the circle (40° apart),
-   each with a negative delay so it starts already in position. */
-
-.skill-python      { animation-delay: -0s; }
-.skill-cpp         { animation-delay: -2.44s; }
-.skill-sql         { animation-delay: -4.88s; }
-.skill-pandas      { animation-delay: -7.33s; }
-.skill-numpy       { animation-delay: -9.77s; }
-.skill-matplotlib  { animation-delay: -12.22s; }
-.skill-jupyter     { animation-delay: -14.66s; }
-.skill-git         { animation-delay: -17.11s; }
-.skill-github      { animation-delay: -19.55s; }
-
-.skill-python img,
-.skill-cpp img,
-.skill-sql img,
-.skill-pandas img,
-.skill-numpy img,
-.skill-matplotlib img,
-.skill-jupyter img,
-.skill-github img,
-.skill-git img {
-    animation-delay: inherit;
-}
-
-@keyframes orbitRotate {
-    from { transform: rotate(0deg) translateX(230px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(230px) rotate(-360deg); }
-}
-
-@keyframes counterRotate {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(-360deg); }
-}
-
-.skills-note {
-    text-align: center;
-    color: var(--text-faint);
-    font-size: 14px;
-    margin-top: 36px;
-}
-
-/* ========================================================
-   Projects
-   ======================================================== */
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
-
-.project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 32px;
-    position: relative;
-    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-}
-
-.project-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--border-strong);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-}
-
-.project-card.featured {
-    grid-column: 1 / -1;
-    background: linear-gradient(135deg, rgba(139,92,246,0.14), rgba(34,211,238,0.08));
-}
-
-.project-number {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--primary-light);
-}
-
-.project-tech {
-    font-size: 12.5px;
-    color: var(--accent);
-    letter-spacing: 0.5px;
-    margin: 10px 0 12px;
-    text-transform: uppercase;
-}
-
-.project-card h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.project-card p {
-    color: var(--text-muted);
-    font-size: 14.5px;
-    margin-bottom: 20px;
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 600;
-    color: var(--primary-light);
-    font-size: 14.5px;
-    transition: gap var(--transition);
-}
-
-.project-link:hover {
-    gap: 10px;
-}
-
-.project-link-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 22px;
-}
-
-.project-link-secondary {
-    color: var(--text-muted);
-}
-
-.project-link-secondary:hover {
-    color: var(--accent);
-}
-
-/* ========================================================
-   Experience Timeline
-   ======================================================== */
-
-.timeline {
-    max-width: 720px;
-    margin: 0 auto;
-    position: relative;
-    padding-left: 30px;
-    border-left: 2px solid var(--border);
-}
-
-.timeline-item {
-    position: relative;
-    padding-bottom: 40px;
-}
-
-.timeline-item:last-child {
-    padding-bottom: 0;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -39px;
-    top: 4px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    box-shadow: 0 0 0 4px rgba(139,92,246,0.2);
-}
-
-.timeline-content {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 26px;
-}
-
-.timeline-date {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.5px;
-}
-
-.timeline-content h3 {
-    font-size: 18px;
-    margin: 8px 0 4px;
-}
-
-.timeline-organization {
-    color: var(--primary-light);
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.timeline-content p:not(.timeline-organization) {
-    color: var(--text-muted);
-    font-size: 14.5px;
-}
-
-/* ========================================================
-   Education
-   ======================================================== */
-
-.education-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 780px;
-    margin: 0 auto;
-}
-
-.education-card {
-    display: flex;
-    gap: 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 28px;
-    transition: border-color var(--transition);
-}
-
-.education-card:hover {
-    border-color: var(--border-strong);
-}
-
-.education-icon {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 14px;
-    color: #fff;
-}
-
-.education-date {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--accent);
-}
-
-.education-status {
-    margin-left: 10px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--primary-light);
-    background: rgba(139,92,246,0.12);
-    padding: 3px 9px;
-    border-radius: 999px;
-}
-
-.education-details h3 {
-    font-size: 18px;
-    margin: 8px 0 4px;
-}
-
-.education-institution {
-    color: var(--primary-light);
-    font-weight: 600;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.education-details > p:not(.education-institution):not(.education-result) {
-    color: var(--text-muted);
-    font-size: 14.5px;
-    margin-bottom: 10px;
-}
-
-.education-result {
-    font-size: 14px;
-    color: var(--text-muted);
-}
-
-.result-separator {
-    margin: 0 6px;
-    color: var(--text-faint);
-}
-
-/* ========================================================
-   Achievements
-   ======================================================== */
-
-.achievement-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    max-width: 780px;
-    margin: 0 auto;
-}
-
-.achievement-item {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 24px 28px;
-}
-
-.achievement-icon {
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: rgba(139,92,246,0.14);
-    color: var(--primary-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 14px;
-}
-
-.achievement-item h3 {
-    font-size: 16.5px;
-    margin-bottom: 6px;
-}
-
-.achievement-item p {
-    color: var(--text-muted);
-    font-size: 14.5px;
-}
-
-/* ========================================================
-   Certifications
-   ======================================================== */
-
-.certification-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.info-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 26px;
-    transition: transform var(--transition), border-color var(--transition);
-}
-
-.info-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-strong);
-}
-
-.certificate-number {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--primary-light);
-}
-
-.info-card h3 {
-    font-size: 15.5px;
-    margin: 10px 0 8px;
-    line-height: 1.4;
-}
-
-.issuer {
-    font-size: 13.5px;
-    color: var(--text-muted);
-}
-
-/* ========================================================
-   Contact
-   ======================================================== */
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 50px;
-    align-items: start;
-}
-
-.contact-description {
-    color: var(--text-muted);
-    margin: 16px 0 30px;
-    max-width: 440px;
-}
-
-.contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 16px 20px;
-    transition: border-color var(--transition), transform var(--transition);
-}
-
-.contact-link:hover {
-    border-color: var(--border-strong);
-    transform: translateX(6px);
-}
-
-.contact-link-icon {
-    flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: var(--gradient-primary);
-    color: #fff;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.contact-link strong {
-    display: block;
-    font-size: 14.5px;
-}
-
-.contact-link small {
-    color: var(--text-muted);
-    font-size: 13px;
-}
-
-.contact-form-wrapper {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 13.5px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text-muted);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 13px 16px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 14.5px;
-    resize: vertical;
-    transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
-}
-
-.form-submit {
-    width: 100%;
-    justify-content: center;
-    margin-top: 6px;
-}
-
-.form-status {
-    margin-top: 14px;
-    font-size: 14px;
-    min-height: 20px;
-}
-
-.form-status.success {
-    color: #4ade80;
-}
-
-.form-status.error {
-    color: #f87171;
-}
-
-/* ========================================================
-   Footer
-   ======================================================== */
-
-.site-footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0;
-    background: transparent;
-}
-
-.footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.footer-logo {
-    font-weight: 800;
-    font-size: 16px;
-}
-
-.footer-content p {
-    color: var(--text-muted);
-    font-size: 13.5px;
-    letter-spacing: 0.2px;
-    text-align: center;
-}
-
-.footer-content p::before {
-    content: "✦ ";
-    color: var(--primary-light);
-}
-
-.footer-content p::after {
-    content: " ✦";
-    color: var(--accent);
-}
-
-.back-to-top {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background var(--transition), transform var(--transition);
-}
-
-.back-to-top:hover {
-    background: var(--primary);
-    transform: translateY(-4px);
-}
-
-/* ---------- Broken image fallback ---------- */
-
-.image-load-error {
-    background: var(--surface-2);
-    min-height: 60px;
-    position: relative;
-}
-
-/* ========================================================
-   Responsive
-   ======================================================== */
-
-@media (max-width: 980px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-content h2 {
-        justify-content: center;
-    }
-
-    .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px 16px;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .certification-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .skills-orbit {
-        width: 400px;
-        height: 400px;
-    }
-
-    .skill-orbit-item {
-        transform-origin: 200px 200px;
-        width: 56px;
-        height: 56px;
-        margin: -28px;
-    }
-
-    .skill-icon-badge {
-        width: 56px;
-        height: 56px;
-        padding: 8px;
-        border-radius: 14px;
-    }
-
-    .skill-label {
-        font-size: 10.5px;
-        padding: 2px 8px;
-    }
-
-    @keyframes orbitRotate {
-        from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
-        to   { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
-    }
-}
-
-@media (max-width: 900px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 76px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-        background: var(--bg-alt);
-        border-bottom: 1px solid var(--border);
-        padding: 16px 24px 24px;
-        transform: translateY(-12px);
-        opacity: 0;
-        pointer-events: none;
-        transition: transform var(--transition), opacity var(--transition);
-    }
-
-    .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .nav-links a {
-        width: 100%;
-        padding: 12px 0;
-        border-bottom: 1px solid var(--border);
-    }
-}
-
-@media (max-width: 640px) {
-    .section {
-        padding: 80px 0;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .certification-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .skills-orbit {
-        width: 320px;
-        height: 320px;
-    }
-
-    .skill-orbit-item {
-        transform-origin: 160px 160px;
-        width: 46px;
-        height: 46px;
-        margin: -23px;
-    }
-
-    .skill-icon-badge {
-        width: 46px;
-        height: 46px;
-        padding: 7px;
-        border-radius: 12px;
-    }
-
-    .skill-label {
-        font-size: 9.5px;
-        padding: 2px 7px;
-    }
-
-    @keyframes orbitRotate {
-        from { transform: rotate(0deg) translateX(160px) rotate(0deg); }
-        to   { transform: rotate(360deg) translateX(160px) rotate(-360deg); }
-    }
-
-    .hero-image-wrapper {
-        width: 220px;
-        height: 220px;
-    }
-
-    .education-card {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 430px) {
-    /* Labels get tight on very narrow phones — hide them and
-       rely on tap/hover tooltip (title attribute set by script.js) */
-    .skill-label {
-        display: none;
-    }
-}
-
-/* Respect reduced motion preference */
-
-@media (prefers-reduced-motion: reduce) {
-    .hero-glow,
-    .hero-image-glow,
-    .hero-image-frame,
-    .skill-orbit-item,
-    .skill-inner {
-        animation: none !important;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Portfolio of Muqaddas Zaheer Ahmad, a BS Artificial Intelligence student interested in Artificial Intelligence, Machine Learning, Python, and Data Analytics."
+    >
+
+    <meta
+        name="author"
+        content="Muqaddas Zaheer Ahmad"
+    >
+
+    <meta
+        name="theme-color"
+        content="#6d28d9"
+    >
+
+    <title>Muqaddas Zaheer Ahmad | AI Student & Developer</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         Header
+    ========================== -->
+
+    <header class="site-header">
+
+        <nav
+            class="navbar container"
+            aria-label="Main navigation"
+        >
+
+            <a
+                href="#home"
+                class="logo"
+                aria-label="Muqaddas home"
+            >
+                Muqaddas
+                <span class="logo-heart" aria-hidden="true">♥</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div
+                class="nav-links"
+                id="main-navigation"
+            >
+                <a
+                    href="#home"
+                    class="active"
+                >
+                    Home
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#skills">
+                    Skills
+                </a>
+
+                <a href="#projects">
+                    Projects
+                </a>
+
+                <a href="#experience">
+                    Experience
+                </a>
+
+                <a href="#education">
+                    Education
+                </a>
+
+                <a href="#achievements">
+                    Achievements
+                </a>
+
+                <a href="#certifications">
+                    Certifications
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main>
+
+        <!-- =========================
+             Hero Section
+        ========================== -->
+
+        <section
+            class="hero"
+            id="home"
+        >
+
+            <div class="hero-glow hero-glow-one"></div>
+            <div class="hero-glow hero-glow-two"></div>
+            <div class="hero-grid"></div>
+
+            <div class="container hero-container">
+
+                <!-- Hero image -->
+
+                <div class="hero-image-wrapper">
+
+                    <div class="hero-image-glow"></div>
+
+                    <div class="hero-image-frame">
+
+                        <img
+                            src="assets/images/hero-ai.jpg"
+                            alt="Muqaddas Zaheer Ahmad"
+                            class="hero-image"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Hero content -->
+
+                <div class="hero-content">
+
+                    <p class="hero-intro">
+                        BS Artificial Intelligence Student
+                    </p>
+
+                    <h1>
+                        Muqaddas Zaheer Ahmad
+                    </h1>
+
+                    <h2>
+                        AI
+                        <span>•</span>
+                        Machine Learning
+                        <span>•</span>
+                        Python
+                        <span>•</span>
+                        Data Analytics
+                    </h2>
+
+                    <p class="hero-description">
+                        I am a BS Artificial Intelligence student at the
+                        University of Kamalia, passionate about learning AI,
+                        building practical projects, and turning ideas into
+                        useful solutions.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#projects"
+                            class="btn btn-primary"
+                        >
+                            View My Projects
+                        </a>
+
+                        <a
+                            href="#contact"
+                            class="btn btn-secondary"
+                        >
+                            Contact Me
+                        </a>
+
+                        <a
+                            href="Muqaddas_Zaheer_Ahmad_Resume.pdf"
+                            class="btn btn-secondary"
+                            download
+                        >
+                            Download Resume
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Statistics
+        ========================== -->
+
+        <section
+            class="stats-section"
+            aria-label="Portfolio statistics"
+        >
+
+            <div class="container">
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <strong>3.98</strong>
+                        <span>Current GPA</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <strong>2/8</strong>
+                        <span>Semesters Completed</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <strong>20+</strong>
+                        <span>Certifications</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <strong>10+</strong>
+                        <span>Projects</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <strong>Spring 2029</strong>
+                        <span>Expected Graduation</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <strong>3</strong>
+                        <span>Languages Spoken</span>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             About
+        ========================== -->
+
+        <section
+            class="about-section section"
+            id="about"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        About Me
+                    </p>
+
+                    <h2>
+                        Learning, Building & Growing
+                    </h2>
+
+                    <p>
+                        A growing journey in artificial intelligence,
+                        programming, and data.
+                    </p>
+
+                </div>
+
+                <div class="about-content">
+
+                    <div class="about-card">
+
+                        <p>
+                            I am a BS Artificial Intelligence student at
+                            the University of Kamalia with a strong interest
+                            in Artificial Intelligence, Machine Learning,
+                            Python, and Data Analytics.
+                        </p>
+
+                        <p>
+                            I enjoy learning new technologies, solving
+                            programming problems, and building practical
+                            projects that help me strengthen my technical
+                            and analytical skills.
+                        </p>
+
+                        <p>
+                            Through university coursework, certifications,
+                            internship experience, and hands-on projects,
+                            I am continuously working toward becoming a
+                            skilled AI and Machine Learning professional.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Skills
+        ========================== -->
+
+        <section
+            class="skills-section section"
+            id="skills"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        My Skills
+                    </p>
+
+                    <h2>
+                        Technologies I Work With
+                    </h2>
+
+                    <p>
+                        Explore the technologies and tools I am learning
+                        and using in my projects.
+                    </p>
+
+                </div>
+
+
+                <!--
+                    The CSS positions these icons in a rotating
+                    circular orbit. The JavaScript handles
+                    interaction without breaking the animation.
+                -->
+
+                <div
+                    class="skills-orbit"
+                    aria-label="Technical skills"
+                >
+
+                    <div class="skills-orbit-center">
+
+                        <span>AI</span>
+
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-python"
+                        data-skill="Python"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/python.jpg"
+                                    alt="Python"
+                                >
+                            </span>
+                            <span class="skill-label">Python</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-cpp"
+                        data-skill="C++"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/cpp.jpg"
+                                    alt="C++"
+                                >
+                            </span>
+                            <span class="skill-label">C++</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-sql"
+                        data-skill="SQL"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/sql.jpg"
+                                    alt="SQL"
+                                >
+                            </span>
+                            <span class="skill-label">SQL</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-pandas"
+                        data-skill="pandas"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/pandas.jpg"
+                                    alt="pandas"
+                                >
+                            </span>
+                            <span class="skill-label">pandas</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-numpy"
+                        data-skill="NumPy"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/numpy.jpeg"
+                                    alt="NumPy"
+                                >
+                            </span>
+                            <span class="skill-label">NumPy</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-matplotlib"
+                        data-skill="Matplotlib"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/matplotlib.jpg"
+                                    alt="Matplotlib"
+                                >
+                            </span>
+                            <span class="skill-label">Matplotlib</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-jupyter"
+                        data-skill="Jupyter Notebook"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/jupyter.jpg"
+                                    alt="Jupyter Notebook"
+                                >
+                            </span>
+                            <span class="skill-label">Jupyter</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-git"
+                        data-skill="Git"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/git.jpg"
+                                    alt="Git"
+                                >
+                            </span>
+                            <span class="skill-label">Git</span>
+                        </div>
+                    </div>
+
+
+                    <div
+                        class="skill-orbit-item skill-github"
+                        data-skill="GitHub"
+                    >
+                        <div class="skill-inner">
+                            <span class="skill-icon-badge">
+                                <img
+                                    src="assets/skills/github.jpg"
+                                    alt="GitHub"
+                                >
+                            </span>
+                            <span class="skill-label">GitHub</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <p class="skills-note">
+                    Hover over an icon to explore the technologies I use.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Projects
+        ========================== -->
+
+        <section
+            class="projects-section section"
+            id="projects"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        Featured Work
+                    </p>
+
+                    <h2>
+                        Projects I Have Built
+                    </h2>
+
+                    <p>
+                        Practical projects that reflect my learning in
+                        AI, Python, machine learning, and data analytics.
+                    </p>
+
+                </div>
+
+
+                <div class="projects-grid">
+
+
+                    <article class="project-card featured">
+
+                        <span class="project-number">
+                            01
+                        </span>
+
+                        <p class="project-tech">
+                            AI • Agents • Student Support
+                        </p>
+
+                        <h3>
+                            Rahman AI Student Success Agent
+                        </h3>
+
+                        <p>
+                            An AI-powered student support assistant designed
+                            to provide study guidance, academic planning,
+                            practice, assessment, and personalized learning
+                            support.
+                        </p>
+
+                        <div class="project-link-group">
+
+                            <a
+                                href="https://rahman-ai-student-success-agent-production.up.railway.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                Live Demo
+                                <span aria-hidden="true">→</span>
+                            </a>
+
+                            <a
+                                href="https://github.com/muqaddaszaheer/rahman-ai-student-success-agent"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link project-link-secondary"
+                            >
+                                View on GitHub
+                                <span aria-hidden="true">→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <span class="project-number">
+                            02
+                        </span>
+
+                        <p class="project-tech">
+                            AI • Python • Learning Assistant
+                        </p>
+
+                        <h3>
+                            Muqaddas AI Learning Assistant
+                        </h3>
+
+                        <p>
+                            A beginner-friendly AI learning assistant that
+                            provides explanations, examples, practice
+                            questions, and personalized study plans.
+                        </p>
+
+                        <div class="project-link-group">
+
+                            <a
+                                href="https://muqaddas-ai-learning-assistant-production.up.railway.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                Live Demo
+                                <span aria-hidden="true">→</span>
+                            </a>
+
+                            <a
+                                href="https://github.com/muqaddaszaheer/muqaddas-ai-learning-assistant"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link project-link-secondary"
+                            >
+                                View on GitHub
+                                <span aria-hidden="true">→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <span class="project-number">
+                            03
+                        </span>
+
+                        <p class="project-tech">
+                            Python • SQL • Power BI • Data Analytics
+                        </p>
+
+                        <h3>
+                            On Time, On Point
+                        </h3>
+
+                        <p>
+                            A data analytics capstone project analyzing
+                            delivery performance and customer satisfaction
+                            using the Brazilian E-Commerce Public Dataset
+                            by Olist.
+                        </p>
+
+                        <a
+                            href="https://github.com/muqaddaszaheer/shipright-delivery-performance-analysis"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            View on GitHub
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <span class="project-number">
+                            04
+                        </span>
+
+                        <p class="project-tech">
+                            Python • Programming Fundamentals
+                        </p>
+
+                        <h3>
+                            Smart Student Result Management System
+                        </h3>
+
+                        <p>
+                            A Python-based application for managing student
+                            results, calculating grades, and displaying
+                            academic performance.
+                        </p>
+
+                        <a
+                            href="https://github.com/muqaddaszaheer/smart-student-result-management-system"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            View on GitHub
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <span class="project-number">
+                            05
+                        </span>
+
+                        <p class="project-tech">
+                            Python • Management System
+                        </p>
+
+                        <h3>
+                            ZZS Cafe Management System
+                        </h3>
+
+                        <p>
+                            A Python-based cafe management system for menu
+                            selection, reservations, home delivery, and bill
+                            calculation.
+                        </p>
+
+                        <a
+                            href="https://github.com/muqaddaszaheer/zzs-cafe-management-system"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            View on GitHub
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Experience
+        ========================== -->
+
+        <section
+            class="experience-section section"
+            id="experience"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        Experience
+                    </p>
+
+                    <h2>
+                        My Learning & Professional Journey
+                    </h2>
+
+                </div>
+
+
+                <div class="timeline">
+
+
+                    <article class="timeline-item">
+
+                        <div
+                            class="timeline-dot"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-date">
+                                2026
+                            </span>
+
+                            <h3>
+                                Machine Learning Engineering Intern
+                            </h3>
+
+                            <p class="timeline-organization">
+                                FlyRank AI
+                            </p>
+
+                            <p>
+                                Developing practical machine learning and
+                                AI skills through assignments, projects,
+                                research, and hands-on internship work.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="timeline-item">
+
+                        <div
+                            class="timeline-dot"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-date">
+                                2026
+                            </span>
+
+                            <h3>
+                                AI Researcher & Content Creator
+                            </h3>
+
+                            <p class="timeline-organization">
+                                Computing & Artificial Intelligence Society
+                            </p>
+
+                            <p>
+                                Exploring AI-related topics and contributing
+                                to research and educational content.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Education
+        ========================== -->
+
+        <section
+            class="education-section section"
+            id="education"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        Education
+                    </p>
+
+                    <h2>
+                        Academic Background
+                    </h2>
+
+                    <p>
+                        My academic journey from secondary education
+                        to Artificial Intelligence.
+                    </p>
+
+                </div>
+
+
+                <div class="education-list">
+
+
+                    <!-- BS -->
+
+                    <article class="education-card">
+
+                        <div class="education-icon">
+                            BS
+                        </div>
+
+                        <div class="education-details">
+
+                            <span class="education-date">
+                                09/2025 – Present
+                            </span>
+
+                            <span class="education-status">
+                                Currently Studying
+                            </span>
+
+                            <h3>
+                                Bachelor of Science in Artificial Intelligence
+                            </h3>
+
+                            <p class="education-institution">
+                                University of Kamalia (UOK)
+                            </p>
+
+                            <p>
+                                Bachelor's degree in Artificial Intelligence
+                                with coursework in programming, machine
+                                learning, databases, data analysis, and
+                                computer science.
+                            </p>
+
+                            <p class="education-result">
+                                Current GPA:
+                                <strong>3.98</strong>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FSc -->
+
+                    <article class="education-card">
+
+                        <div class="education-icon">
+                            FSc
+                        </div>
+
+                        <div class="education-details">
+
+                            <span class="education-date">
+                                09/2023 – 07/2025
+                            </span>
+
+                            <h3>
+                                FSc Pre-Medical
+                            </h3>
+
+                            <p class="education-institution">
+                                Associate College for Women, Kamalia
+                            </p>
+
+                            <p>
+                                Completed Intermediate (FSc Pre-Medical)
+                                with coursework in Biology, Chemistry,
+                                and Physics, developing strong analytical
+                                thinking, problem-solving, and academic
+                                discipline.
+                            </p>
+
+                            <p class="education-result">
+                                Marks:
+                                <strong>1053</strong>
+                                <span class="result-separator">•</span>
+                                Grade:
+                                <strong>A</strong>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Matric -->
+
+                    <article class="education-card">
+
+                        <div class="education-icon">
+                            SSC
+                        </div>
+
+                        <div class="education-details">
+
+                            <span class="education-date">
+                                04/2021 – 04/2023
+                            </span>
+
+                            <h3>
+                                Matriculation (Science)
+                            </h3>
+
+                            <p class="education-institution">
+                                Government Model High School, Kamalia
+                            </p>
+
+                            <p>
+                                Completed Matriculation (Science) with
+                                coursework in Mathematics, Physics,
+                                Chemistry, and Biology, developing strong
+                                analytical thinking, problem-solving,
+                                and academic skills.
+                            </p>
+
+                            <p class="education-result">
+                                Marks:
+                                <strong>982</strong>
+                                <span class="result-separator">•</span>
+                                Grade:
+                                <strong>A</strong>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Achievements
+        ========================== -->
+
+        <section
+            class="achievements-section section"
+            id="achievements"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        Achievements
+                    </p>
+
+                    <h2>
+                        Milestones I Am Proud Of
+                    </h2>
+
+                </div>
+
+
+                <div class="achievement-list">
+
+
+                    <article class="achievement-item">
+
+                        <div class="achievement-icon">
+                            01
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Gold Medal Achievement Award — 1st Position
+                            </h3>
+
+                            <p>
+                                Recognized for achieving first position
+                                during the second semester.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="achievement-item">
+
+                        <div class="achievement-icon">
+                            02
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                1st Position — Programming Fundamentals Training
+                            </h3>
+
+                            <p>
+                                Secured first position in the Two Weeks
+                                Training of Programming Fundamentals under
+                                the Skills Development Program 2026 at the
+                                University of Kamalia.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Certifications
+        ========================== -->
+
+        <section
+            class="certifications-section section"
+            id="certifications"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        Certifications
+                    </p>
+
+                    <h2>
+                        Continuous Learning
+                    </h2>
+
+                    <p>
+                        A selection of my certifications across
+                        AI, machine learning, Python, and data analytics
+                        — 20+ completed on Coursera and Anthropic Academy.
+                    </p>
+
+                </div>
+
+
+                <div class="certification-grid">
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Supervised Machine Learning:
+                            Regression and Classification
+                        </h3>
+
+                        <p class="issuer">
+                            DeepLearning.AI / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Google AI Essentials
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Crash Course on Python
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            04
+                        </span>
+
+                        <h3>
+                            Prompting Essentials
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            05
+                        </span>
+
+                        <h3>
+                            Claude Code 101
+                        </h3>
+
+                        <p class="issuer">
+                            Anthropic Academy
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            06
+                        </span>
+
+                        <h3>
+                            Google Data Analytics Professional Certificate
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            07
+                        </span>
+
+                        <h3>
+                            AI Fundamentals
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            08
+                        </span>
+
+                        <h3>
+                            Introduction to AI
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            09
+                        </span>
+
+                        <h3>
+                            Google Data Analytics Capstone:
+                            Complete a Case Study
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                    <article class="info-card">
+
+                        <span class="certificate-number">
+                            10
+                        </span>
+
+                        <h3>
+                            Use AI Responsibly
+                        </h3>
+
+                        <p class="issuer">
+                            Google / Coursera
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Contact
+        ========================== -->
+
+        <section
+            class="contact-section section"
+            id="contact"
+        >
+
+            <div class="container">
+
+                <div class="contact-grid">
+
+
+                    <!-- Contact information -->
+
+                    <div class="contact-content">
+
+                        <p class="section-label">
+                            Get In Touch
+                        </p>
+
+                        <h2>
+                            Let's Connect
+                        </h2>
+
+                        <p class="contact-description">
+                            I am always interested in learning,
+                            collaborating, and connecting with people
+                            who share an interest in AI, technology,
+                            and data.
+                        </p>
+
+
+                        <div class="contact-links">
+
+
+                            <a
+                                href="mailto:muqaddaszaheer76@gmail.com"
+                                class="contact-link"
+                            >
+
+                                <span class="contact-link-icon">
+                                    @
+                                </span>
+
+                                <span>
+                                    <strong>Email</strong>
+                                    <small>
+                                        muqaddaszaheer76@gmail.com
+                                    </small>
+                                </span>
+
+                            </a>
+
+
+                            <a
+                                href="https://github.com/muqaddaszaheer"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="contact-link"
+                            >
+
+                                <span class="contact-link-icon">
+                                    GH
+                                </span>
+
+                                <span>
+                                    <strong>GitHub</strong>
+                                    <small>
+                                        github.com/muqaddaszaheer
+                                    </small>
+                                </span>
+
+                            </a>
+
+
+                            <a
+                                href="https://www.linkedin.com/in/muqaddas-zaheer-ahmad-aa59913a7/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="contact-link"
+                            >
+
+                                <span class="contact-link-icon">
+                                    in
+                                </span>
+
+                                <span>
+                                    <strong>LinkedIn</strong>
+                                    <small>
+                                        Muqaddas Zaheer Ahmad
+                                    </small>
+                                </span>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Contact form -->
+
+                    <div class="contact-form-wrapper">
+
+                        <form
+                            class="contact-form"
+                            id="contact-form"
+                        >
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Your name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="your@email.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="message">
+                                    Message
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="6"
+                                    placeholder="Write your message..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary form-submit"
+                            >
+                                Send Message
+                            </button>
+
+                            <p
+                                class="form-status"
+                                id="form-status"
+                                aria-live="polite"
+                            ></p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <a
+                    href="#home"
+                    class="footer-logo"
+                >
+                    Muqaddas
+                    <span aria-hidden="true">♥</span>
+                </a>
+
+                <p>
+                    © 2026 Muqaddas Zaheer Ahmad.
+                    Built with HTML, CSS & JavaScript.
+                </p>
+
+                <a
+                    href="#home"
+                    class="back-to-top"
+                    aria-label="Back to top"
+                >
+                    ↑
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
