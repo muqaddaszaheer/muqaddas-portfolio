@@ -1,16 +1,16 @@
 # Dependencies
 node_modules/
 
-# Build output
+# Environment and secret files
+.env
+.env.*
+!.env.example
+
+# Build and output folders
 dist/
 dist-ssr/
 build/
 out/
-
-# Environment files
-.env
-.env.*
-!.env.example
 
 # Logs
 *.log
@@ -23,7 +23,7 @@ pnpm-debug.log*
 .vscode/
 .idea/
 
-# OS files
+# Operating system files
 .DS_Store
 Thumbs.db
 desktop.ini
