@@ -7,49 +7,58 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 
-    // Mobile navigation
+    // ---------- Mobile Navigation ----------
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", () => {
-            const isOpen = navLinks.classList.toggle("active");
+        const closeMenu = () => {
+            navLinks.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+        };
 
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close navigation menu" : "Open navigation menu"
-            );
+        const openMenu = () => {
+            navLinks.classList.add("active");
+            menuToggle.setAttribute("aria-expanded", "true");
+            menuToggle.setAttribute("aria-label", "Close navigation menu");
+        };
+
+        menuToggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            const isOpen = navLinks.classList.contains("active");
+
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
         // Close menu after clicking a navigation link
         navLinks.querySelectorAll("a").forEach((link) => {
             link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
+                closeMenu();
             });
         });
 
-        // Close menu when clicking outside it
+        // Close menu when clicking outside
         document.addEventListener("click", (event) => {
-            const clickedInsideMenu = navLinks.contains(event.target);
-            const clickedToggle = menuToggle.contains(event.target);
+            if (
+                !navLinks.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+                closeMenu();
+            }
+        });
 
-            if (!clickedInsideMenu && !clickedToggle) {
-                navLinks.classList.remove("active");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
+        // Close menu when pressing Escape
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
             }
         });
     }
 
-    // Update the active navigation link while scrolling
+    // ---------- Active Navigation Link ----------
     const sections = document.querySelectorAll("main section[id]");
     const navigationLinks = document.querySelectorAll(
         '.nav-links a[href^="#"]'
@@ -60,18 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
             let currentSection = "";
 
             sections.forEach((section) => {
-                const sectionTop = section.offsetTop - 120;
+                const sectionTop = section.offsetTop - 130;
 
                 if (window.scrollY >= sectionTop) {
-                    currentSection = section.getAttribute("id");
+                    currentSection = section.id;
                 }
             });
 
             navigationLinks.forEach((link) => {
-                const isActive =
-                    link.getAttribute("href") === `#${currentSection}`;
+                const targetSection = link.getAttribute("href");
 
-                link.classList.toggle("active", isActive);
+                link.classList.toggle(
+                    "active",
+                    targetSection === `#${currentSection}`
+                );
             });
         };
 
