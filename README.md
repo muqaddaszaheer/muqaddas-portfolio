@@ -2,23 +2,28 @@
 
 Welcome to my personal portfolio website.
 
-I am a BS Artificial Intelligence student at the University of Kamalia with an interest in Artificial Intelligence, Machine Learning, Python, and Data Analytics. This portfolio showcases my skills, experience, certifications, achievements, and practical projects.
+I am a BS Artificial Intelligence student at the University of Kamalia with an interest in Artificial Intelligence, Machine Learning, Python, and Data Analytics. This portfolio highlights my skills, experience, certifications, achievements, and practical projects.
 
 ## About
 
-This portfolio represents my learning journey in Artificial Intelligence and highlights the skills I have developed through university coursework, internships, certifications, and hands-on projects.
+This portfolio reflects my learning journey in Artificial Intelligence and showcases the skills I have developed through university coursework, internships, certifications, and hands-on projects.
 
 ## Featured Projects
 
-- **Rahman AI Student Success Agent** — AI-powered student support assistant for study guidance, academic planning, practice, assessment, and personalized assistance.
-- **Muqaddas AI Learning Assistant** — Beginner-friendly AI learning assistant for explanations, examples, practice questions, and study plans.
-- **On Time, On Point — Delivery Performance & Customer Satisfaction** — Data analytics capstone project using Python, SQL, and Power BI.
-- **Smart Student Result Management System** — Python application for managing student results and calculating grades.
+- **[Rahman AI Student Success Agent](https://github.com/muqaddaszaheer/rahman-ai-student-success-agent)** — AI-powered student support assistant for study guidance, academic planning, practice, assessment, and personalized assistance.
+
+- **[Muqaddas AI Learning Assistant](https://github.com/muqaddaszaheer/muqaddas-ai-learning-assistant)** — Beginner-friendly AI learning assistant for explanations, examples, practice questions, and study plans.
+
+- **[On Time, On Point — Delivery Performance & Customer Satisfaction](https://github.com/muqaddaszaheer/shipright-delivery-performance-analysis)** — Data analytics capstone project using Python, SQL, and Power BI.
+
+- **[Smart Student Result Management System](https://github.com/muqaddaszaheer/smart-student-result-management-system)** — Python application for managing student results and calculating grades.
+
+- **[ZZS Cafe Management System](https://github.com/muqaddaszaheer/zzs-cafe-management-system)** — Cafe management system developed as a practical programming project.
 
 ## Skills
 
 - **Programming:** Python, C++, SQL
-- **Data Analytics:** pandas, NumPy, Data Cleaning, EDA, Statistical Analysis
+- **Data Analytics:** pandas, NumPy, Data Cleaning, Exploratory Data Analysis (EDA), Statistical Analysis
 - **Machine Learning:** Regression, Classification, Machine Learning Fundamentals
 - **Artificial Intelligence:** AI Agents, Generative AI, Prompt Engineering, Hugging Face, API Integration
 - **Data Visualization:** Matplotlib, Power BI
