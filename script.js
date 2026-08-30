@@ -7,85 +7,127 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     // ========================================
-    // Mobile Navigation
+    // Elements
     // ========================================
 
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
+    const navigationLinks = document.querySelectorAll(
+        '.nav-links a[href^="#"]'
+    );
+
+    const sections = document.querySelectorAll(
+        "main section[id]"
+    );
+
+    const contactForm = document.querySelector("#contact-form");
+    const formStatus = document.querySelector("#form-status");
+
+    const skillItems = document.querySelectorAll(
+        ".skill-orbit-item"
+    );
+
+    // ========================================
+    // Mobile Navigation
+    // ========================================
+
+    const closeMobileMenu = () => {
+        if (!navLinks || !menuToggle) {
+            return;
+        }
+
+        navLinks.classList.remove("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuToggle.classList.remove("active");
+    };
+
+    const openMobileMenu = () => {
+        if (!navLinks || !menuToggle) {
+            return;
+        }
+
+        navLinks.classList.add("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuToggle.classList.add("active");
+    };
 
     if (menuToggle && navLinks) {
-        const closeMenu = () => {
-            navLinks.classList.remove("active");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation menu");
-        };
-
-        const openMenu = () => {
-            navLinks.classList.add("active");
-            menuToggle.setAttribute("aria-expanded", "true");
-            menuToggle.setAttribute("aria-label", "Close navigation menu");
-        };
-
         menuToggle.addEventListener("click", (event) => {
             event.stopPropagation();
 
-            const isOpen = navLinks.classList.contains("active");
+            const isOpen =
+                navLinks.classList.contains("active");
 
             if (isOpen) {
-                closeMenu();
+                closeMobileMenu();
             } else {
-                openMenu();
+                openMobileMenu();
             }
         });
 
-        // Close menu after clicking a navigation link
-        navLinks.querySelectorAll("a").forEach((link) => {
+        navigationLinks.forEach((link) => {
             link.addEventListener("click", () => {
-                closeMenu();
+                closeMobileMenu();
             });
         });
 
-        // Close menu when clicking outside
         document.addEventListener("click", (event) => {
-            const clickedInsideNav = navLinks.contains(event.target);
-            const clickedToggle = menuToggle.contains(event.target);
+            const clickedInsideNavigation =
+                navLinks.contains(event.target);
 
-            if (!clickedInsideNav && !clickedToggle) {
-                closeMenu();
+            const clickedMenuButton =
+                menuToggle.contains(event.target);
+
+            if (
+                !clickedInsideNavigation &&
+                !clickedMenuButton
+            ) {
+                closeMobileMenu();
             }
         });
 
-        // Close menu with Escape key
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
-                closeMenu();
-            }
-        });
-
-        // Reset mobile menu when returning to desktop
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 900) {
-                closeMenu();
+                closeMobileMenu();
             }
         });
     }
-
 
     // ========================================
     // Smooth Scrolling
     // ========================================
 
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-
-    anchorLinks.forEach((link) => {
+    navigationLinks.forEach((link) => {
         link.addEventListener("click", (event) => {
-            const targetId = link.getAttribute("href");
+            const targetId =
+                link.getAttribute("href");
 
             if (!targetId || targetId === "#") {
                 return;
             }
 
-            const target = document.querySelector(targetId);
+            const target =
+                document.querySelector(targetId);
 
             if (!target) {
                 return;
@@ -93,10 +135,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.preventDefault();
 
-            const header = document.querySelector(".site-header");
-            const headerHeight = header
-                ? header.offsetHeight
-                : 0;
+            const header =
+                document.querySelector(".site-header");
+
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 0;
 
             const targetPosition =
                 target.getBoundingClientRect().top +
@@ -108,82 +153,68 @@ document.addEventListener("DOMContentLoaded", () => {
                 behavior: "smooth"
             });
 
-            // Update URL without forcing an unwanted page jump
-            if (history.pushState) {
-                history.pushState(null, "", targetId);
-            }
+            window.history.replaceState(
+                null,
+                "",
+                targetId
+            );
         });
     });
 
-
     // ========================================
-    // Active Navigation Link on Scroll
+    // Active Navigation Link
     // ========================================
 
-    const sections = document.querySelectorAll(
-        "main section[id]"
-    );
-
-    const navigationLinks = document.querySelectorAll(
-        '.nav-links a[href^="#"]'
-    );
-
-    if (sections.length && navigationLinks.length) {
-        const updateActiveLink = () => {
+    if (
+        sections.length > 0 &&
+        navigationLinks.length > 0
+    ) {
+        const updateActiveNavigation = () => {
             const scrollPosition =
-                window.scrollY +
-                window.innerHeight * 0.35;
+                window.scrollY + 160;
 
             let currentSection = "";
 
             sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionBottom =
-                    sectionTop + section.offsetHeight;
+                const sectionTop =
+                    section.offsetTop;
+
+                const sectionHeight =
+                    section.offsetHeight;
 
                 if (
                     scrollPosition >= sectionTop &&
-                    scrollPosition < sectionBottom
+                    scrollPosition <
+                        sectionTop + sectionHeight
                 ) {
-                    currentSection = section.id;
+                    currentSection =
+                        section.getAttribute("id");
                 }
             });
 
-            // If the user is near the bottom of the page,
-            // activate the last visible section.
             if (
                 window.innerHeight +
                     window.scrollY >=
-                document.documentElement.scrollHeight - 20
+                document.documentElement.scrollHeight - 10
             ) {
                 const lastSection =
                     sections[sections.length - 1];
 
-                currentSection = lastSection.id;
+                currentSection =
+                    lastSection.getAttribute("id");
             }
 
             navigationLinks.forEach((link) => {
-                const linkTarget =
+                const href =
                     link.getAttribute("href");
 
                 const isActive =
-                    linkTarget === `#${currentSection}`;
+                    href === `#${currentSection}`;
 
                 link.classList.toggle(
                     "active",
                     isActive
                 );
-
-                if (isActive) {
-                    link.setAttribute(
-                        "aria-current",
-                        "page"
-                    );
-                } else {
-                    link.removeAttribute(
-                        "aria-current"
-                    );
-                }
             });
         };
 
@@ -194,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
                 if (!scrollTicking) {
                     window.requestAnimationFrame(() => {
-                        updateActiveLink();
+                        updateActiveNavigation();
                         scrollTicking = false;
                     });
 
@@ -206,88 +237,225 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.addEventListener(
             "resize",
-            updateActiveLink
+            updateActiveNavigation
         );
 
-        updateActiveLink();
+        updateActiveNavigation();
     }
 
+    // ========================================
+    // Skills Interaction
+    // ========================================
+    // The CSS controls the circular rotation.
+    // JavaScript adds accessible hover/focus behavior
+    // without replacing the CSS animation.
+
+    if (skillItems.length > 0) {
+        skillItems.forEach((skill) => {
+            const skillName =
+                skill.getAttribute("data-skill");
+
+            if (skillName) {
+                skill.setAttribute(
+                    "title",
+                    skillName
+                );
+
+                skill.setAttribute(
+                    "aria-label",
+                    skillName
+                );
+
+                skill.setAttribute(
+                    "role",
+                    "img"
+                );
+            }
+
+            skill.addEventListener(
+                "mouseenter",
+                () => {
+                    skill.classList.add(
+                        "skill-hover"
+                    );
+                }
+            );
+
+            skill.addEventListener(
+                "mouseleave",
+                () => {
+                    skill.classList.remove(
+                        "skill-hover"
+                    );
+                }
+            );
+
+            skill.addEventListener(
+                "focus",
+                () => {
+                    skill.classList.add(
+                        "skill-hover"
+                    );
+                }
+            );
+
+            skill.addEventListener(
+                "blur",
+                () => {
+                    skill.classList.remove(
+                        "skill-hover"
+                    );
+                }
+            );
+        });
+    }
 
     // ========================================
-    // Skill Icon Rotation
+    // Contact Form
     // ========================================
-    // CSS performs the actual continuous rotation.
-    // JavaScript only provides optional pause/resume
-    // behavior when the user interacts with the skill area.
+    // GitHub Pages cannot process a form by itself.
+    // This version validates the form and opens the
+    // user's email client with the message.
 
-    const skillOrbit = document.querySelector(
-        ".skills-orbit"
-    );
+    if (contactForm) {
+        contactForm.addEventListener(
+            "submit",
+            (event) => {
+                event.preventDefault();
 
-    if (skillOrbit) {
-        const pauseRotation = () => {
-            skillOrbit.classList.add(
-                "rotation-paused"
-            );
-        };
+                const nameInput =
+                    document.querySelector("#name");
 
-        const resumeRotation = () => {
-            skillOrbit.classList.remove(
-                "rotation-paused"
-            );
-        };
+                const emailInput =
+                    document.querySelector("#email");
 
-        skillOrbit.addEventListener(
-            "mouseenter",
-            pauseRotation
-        );
+                const messageInput =
+                    document.querySelector("#message");
 
-        skillOrbit.addEventListener(
-            "mouseleave",
-            resumeRotation
-        );
+                if (
+                    !nameInput ||
+                    !emailInput ||
+                    !messageInput
+                ) {
+                    return;
+                }
 
-        skillOrbit.addEventListener(
-            "focusin",
-            pauseRotation
-        );
+                const name =
+                    nameInput.value.trim();
 
-        skillOrbit.addEventListener(
-            "focusout",
-            resumeRotation
+                const email =
+                    emailInput.value.trim();
+
+                const message =
+                    messageInput.value.trim();
+
+                if (!name || !email || !message) {
+                    showFormStatus(
+                        "Please fill in all fields.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    showFormStatus(
+                        "Please enter a valid email address.",
+                        "error"
+                    );
+
+                    emailInput.focus();
+
+                    return;
+                }
+
+                const subject =
+                    `Portfolio message from ${name}`;
+
+                const body =
+                    `Name: ${name}\n` +
+                    `Email: ${email}\n\n` +
+                    `Message:\n${message}`;
+
+                const mailtoUrl =
+                    `mailto:muqaddaszaheer76@gmail.com` +
+                    `?subject=${encodeURIComponent(subject)}` +
+                    `&body=${encodeURIComponent(body)}`;
+
+                showFormStatus(
+                    "Opening your email application...",
+                    "success"
+                );
+
+                window.location.href = mailtoUrl;
+            }
         );
     }
 
+    // ========================================
+    // Email Validation
+    // ========================================
+
+    function isValidEmail(email) {
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        return emailPattern.test(email);
+    }
 
     // ========================================
-    // Current Year
+    // Form Status
     // ========================================
 
-    const yearElements =
-        document.querySelectorAll(
-            "[data-current-year]"
+    function showFormStatus(message, type) {
+        if (!formStatus) {
+            return;
+        }
+
+        formStatus.textContent = message;
+
+        formStatus.classList.remove(
+            "success",
+            "error"
         );
 
-    yearElements.forEach((element) => {
-        element.textContent =
-            new Date().getFullYear();
+        formStatus.classList.add(type);
+    }
+
+    // ========================================
+    // Close Mobile Menu on Larger Screens
+    // ========================================
+
+    window.addEventListener("resize", () => {
+        if (
+            window.innerWidth > 900
+        ) {
+            closeMobileMenu();
+        }
     });
 
-
     // ========================================
-    // Prevent Broken External Links
+    // Prevent Broken Image Appearance
     // ========================================
-    // External links open safely in a new tab.
 
-    const externalLinks =
-        document.querySelectorAll(
-            'a[target="_blank"]'
-        );
+    const images =
+        document.querySelectorAll("img");
 
-    externalLinks.forEach((link) => {
-        link.setAttribute(
-            "rel",
-            "noopener noreferrer"
+    images.forEach((image) => {
+        image.addEventListener(
+            "error",
+            () => {
+                image.classList.add(
+                    "image-load-error"
+                );
+            }
         );
     });
+
+    // ========================================
+    // Initial Page State
+    // ========================================
+
+    closeMobileMenu();
+
 });
