@@ -6,41 +6,49 @@
 document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
+    const navigationLinks = document.querySelectorAll(
+        '.nav-links a[href^="#"]'
+    );
+    const sections = document.querySelectorAll("main section[id]");
 
-    // ---------- Mobile Navigation ----------
+    // ----------------------------------------
+    // Mobile Navigation
+    // ----------------------------------------
+
     if (menuToggle && navLinks) {
         const closeMenu = () => {
             navLinks.classList.remove("active");
             menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation menu");
-        };
-
-        const openMenu = () => {
-            navLinks.classList.add("active");
-            menuToggle.setAttribute("aria-expanded", "true");
-            menuToggle.setAttribute("aria-label", "Close navigation menu");
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
         };
 
         menuToggle.addEventListener("click", (event) => {
             event.stopPropagation();
 
-            const isOpen = navLinks.classList.contains("active");
+            const isOpen = navLinks.classList.toggle("active");
 
-            if (isOpen) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            );
         });
 
-        // Close menu after clicking a navigation link
-        navLinks.querySelectorAll("a").forEach((link) => {
+        navigationLinks.forEach((link) => {
             link.addEventListener("click", () => {
                 closeMenu();
             });
         });
 
-        // Close menu when clicking outside
         document.addEventListener("click", (event) => {
             if (
                 !navLinks.contains(event.target) &&
@@ -50,45 +58,47 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Close menu when pressing Escape
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
                 closeMenu();
             }
         });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 760) {
+                closeMenu();
+            }
+        });
     }
 
-    // ---------- Active Navigation Link ----------
-    const sections = document.querySelectorAll("main section[id]");
-    const navigationLinks = document.querySelectorAll(
-        '.nav-links a[href^="#"]'
-    );
+    // ----------------------------------------
+    // Active Navigation Link
+    // ----------------------------------------
 
     if (sections.length && navigationLinks.length) {
         const updateActiveLink = () => {
-            let currentSection = "";
+            const scrollPosition = window.scrollY + 160;
+            let currentSection = "home";
 
             sections.forEach((section) => {
-                const sectionTop = section.offsetTop - 130;
-
-                if (window.scrollY >= sectionTop) {
+                if (scrollPosition >= section.offsetTop) {
                     currentSection = section.id;
                 }
             });
 
             navigationLinks.forEach((link) => {
-                const targetSection = link.getAttribute("href");
+                const href = link.getAttribute("href");
+                const isActive = href === `#${currentSection}`;
 
-                link.classList.toggle(
-                    "active",
-                    targetSection === `#${currentSection}`
-                );
+                link.classList.toggle("active", isActive);
             });
         };
 
         window.addEventListener("scroll", updateActiveLink, {
             passive: true
         });
+
+        window.addEventListener("resize", updateActiveLink);
 
         updateActiveLink();
     }
