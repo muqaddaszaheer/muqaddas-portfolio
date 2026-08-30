@@ -46,13 +46,13 @@ a {
     text-decoration: none;
 }
 
+button {
+    font: inherit;
+}
+
 button,
 a {
     -webkit-tap-highlight-color: transparent;
-}
-
-button {
-    font: inherit;
 }
 
 .container {
@@ -97,9 +97,7 @@ p {
 }
 
 .navbar {
-    width: min(90%, var(--max-width));
     min-height: 72px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -185,7 +183,7 @@ p {
     font-weight: 600;
 }
 
-.hero p:not(.hero-intro) {
+.hero-description {
     max-width: 720px;
     margin: 0 auto 30px;
     color: var(--muted-color);
@@ -251,17 +249,11 @@ section:nth-child(even) {
     background: var(--light-background);
 }
 
-section > * {
-    width: min(90%, var(--max-width));
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* ---------- Future Content Helpers ---------- */
+/* ---------- Section Heading ---------- */
 
 .section-heading {
     max-width: 700px;
-    margin-bottom: 50px;
+    margin: 0 auto 50px;
     text-align: center;
 }
 
@@ -273,10 +265,22 @@ section > * {
     color: var(--muted-color);
 }
 
+/* ---------- About ---------- */
+
 .about-content {
     max-width: 850px;
-    text-align: center;
+    margin: 0 auto;
 }
+
+.about-content p {
+    margin-bottom: 18px;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- Skills ---------- */
 
 .skills-grid {
     display: grid;
@@ -284,16 +288,11 @@ section > * {
     gap: 22px;
 }
 
-.skill-card,
-.project-card,
-.info-card {
+.skill-card {
+    padding: 28px;
     background: var(--background-color);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-}
-
-.skill-card {
-    padding: 28px;
     transition:
         transform var(--transition),
         box-shadow var(--transition);
@@ -312,10 +311,11 @@ section > * {
     color: var(--muted-color);
 }
 
-/* ---------- Experience & Education ---------- */
+/* ---------- Timeline ---------- */
 
 .timeline {
     max-width: 850px;
+    margin: 0 auto;
 }
 
 .timeline-item {
@@ -367,6 +367,9 @@ section > * {
     display: flex;
     flex-direction: column;
     padding: 30px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
     transition:
         transform var(--transition),
         box-shadow var(--transition);
@@ -410,7 +413,7 @@ section > * {
     color: var(--primary-dark);
 }
 
-/* ---------- Certifications & Awards ---------- */
+/* ---------- Certifications & Achievements ---------- */
 
 .cards-grid {
     display: grid;
@@ -420,6 +423,17 @@ section > * {
 
 .info-card {
     padding: 26px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
 }
 
 .info-card h3 {
@@ -442,6 +456,7 @@ section > * {
 
 .contact-content {
     max-width: 750px;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -466,8 +481,6 @@ section > * {
 }
 
 .site-footer p {
-    width: min(90%, var(--max-width));
-    margin: 0 auto;
     color: #cbd5e1;
     font-size: 0.9rem;
 }
