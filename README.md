@@ -2,19 +2,21 @@
 
 Welcome to my personal portfolio website.
 
-I am a BS Artificial Intelligence student at the University of Kamalia with an interest in Artificial Intelligence, Machine Learning, Python, and Data Analytics. This portfolio showcases my skills, experience, certifications, achievements, and practical projects.
+I am a BS Artificial Intelligence student at the University of Kamalia with a growing interest in Artificial Intelligence, Machine Learning, Python, and Data Analytics. This portfolio highlights my skills, projects, certifications, experience, and achievements as I continue to build my knowledge through learning and hands-on practice.
 
 ## About
 
-This portfolio reflects my learning journey in Artificial Intelligence and highlights the skills I have developed through university coursework, internships, certifications, and hands-on projects.
+This portfolio represents my learning journey in Artificial Intelligence and related fields. It brings together my academic work, internship experience, certifications, practical projects, and technical skills.
+
+I enjoy learning new technologies, solving problems, and building practical projects that help me improve my programming and analytical skills.
 
 ## Featured Projects
 
 - **[Rahman AI Student Success Agent](https://github.com/muqaddaszaheer/rahman-ai-student-success-agent)**  
-  An AI-powered student support assistant designed to provide study guidance, academic planning, practice, assessment, and personalized assistance.
+  An AI-powered student support assistant designed to provide study guidance, academic planning, practice, assessment, and personalized learning support.
 
 - **[Muqaddas AI Learning Assistant](https://github.com/muqaddaszaheer/muqaddas-ai-learning-assistant)**  
-  A beginner-friendly AI learning assistant that provides explanations, examples, practice questions, and study plans.
+  A beginner-friendly AI learning assistant that provides explanations, examples, practice questions, and personalized study plans.
 
 - **[On Time, On Point — Delivery Performance & Customer Satisfaction](https://github.com/muqaddaszaheer/shipright-delivery-performance-analysis)**  
   A data analytics capstone project analyzing delivery performance and customer satisfaction using Python, SQL, and Power BI.
@@ -73,7 +75,7 @@ University of Kamalia
 
 ## Achievements
 
-- **Gold Medal Achievement Award — 1st Position, 2nd Semester**
+- **Gold Medal Achievement Award — 1st Position**
 - **1st Position — Programming Fundamentals Training, Skills Development Program 2026**
 
 ## Certifications
@@ -100,4 +102,4 @@ Professional learning and certifications in:
 
 ---
 
-Thank you for visiting my portfolio.
+Thank you for visiting my portfolio!
