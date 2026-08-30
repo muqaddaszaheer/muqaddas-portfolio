@@ -4,61 +4,68 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
         content="Portfolio of Muqaddas Zaheer Ahmad, a BS Artificial Intelligence student interested in Artificial Intelligence, Machine Learning, Python, and Data Analytics."
     >
 
-    <meta
-        name="author"
-        content="Muqaddas Zaheer Ahmad"
-    >
+    <meta name="author" content="Muqaddas Zaheer Ahmad">
 
-    <meta
-        name="theme-color"
-        content="#6d28d9"
+    <meta name="theme-color" content="#6d28d9">
+
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link
+        rel="canonical"
+        href="https://muqaddaszaheer.github.io/muqaddas-portfolio/"
     >
 
     <!-- Favicon -->
     <link
         rel="icon"
         type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%239333ea'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%239333ea'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E"
     >
 
-    <!-- Open Graph / social preview -->
+    <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website">
+
     <meta
         property="og:title"
         content="Muqaddas Zaheer Ahmad | AI Student & Developer"
     >
+
     <meta
         property="og:description"
         content="Portfolio of Muqaddas Zaheer Ahmad, a BS Artificial Intelligence student passionate about AI, Machine Learning, Python, and Data Analytics."
     >
+
     <meta
         property="og:image"
         content="https://muqaddaszaheer.github.io/muqaddas-portfolio/assets/images/hero-ai.jpg"
     >
+
     <meta
         property="og:url"
         content="https://muqaddaszaheer.github.io/muqaddas-portfolio/"
     >
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+
     <meta
         name="twitter:title"
         content="Muqaddas Zaheer Ahmad | AI Student & Developer"
     >
+
     <meta
         name="twitter:description"
         content="Portfolio of Muqaddas Zaheer Ahmad, a BS Artificial Intelligence student passionate about AI, Machine Learning, Python, and Data Analytics."
     >
+
     <meta
         name="twitter:image"
         content="https://muqaddaszaheer.github.io/muqaddas-portfolio/assets/images/hero-ai.jpg"
@@ -66,10 +73,8 @@
 
     <title>Muqaddas Zaheer Ahmad | AI Student & Developer</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -91,7 +96,10 @@
                 aria-label="Muqaddas home"
             >
                 Muqaddas
-                <span class="logo-heart" aria-hidden="true">♥</span>
+                <span
+                    class="logo-heart"
+                    aria-hidden="true"
+                >♥</span>
             </a>
 
             <button
@@ -158,7 +166,7 @@
 
 
     <!-- =========================
-         Main
+         Main Content
     ========================== -->
 
     <main>
@@ -170,26 +178,42 @@
         <section
             class="hero"
             id="home"
+            aria-labelledby="hero-title"
         >
 
-            <div class="hero-glow hero-glow-one"></div>
-            <div class="hero-glow hero-glow-two"></div>
-            <div class="hero-grid"></div>
+            <div
+                class="hero-glow hero-glow-one"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="hero-glow hero-glow-two"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="hero-grid"
+                aria-hidden="true"
+            ></div>
 
             <div class="container hero-container">
 
-                <!-- Hero image -->
+                <!-- Hero Image -->
 
                 <div class="hero-image-wrapper">
 
-                    <div class="hero-image-glow"></div>
+                    <div
+                        class="hero-image-glow"
+                        aria-hidden="true"
+                    ></div>
 
                     <div class="hero-image-frame">
 
                         <img
                             src="assets/images/hero-ai.jpg"
-                            alt="Muqaddas Zaheer Ahmad"
+                            alt="Portrait of Muqaddas Zaheer Ahmad"
                             class="hero-image"
+                            loading="eager"
                         >
 
                     </div>
@@ -197,7 +221,7 @@
                 </div>
 
 
-                <!-- Hero content -->
+                <!-- Hero Content -->
 
                 <div class="hero-content">
 
@@ -205,17 +229,17 @@
                         BS Artificial Intelligence Student
                     </p>
 
-                    <h1>
+                    <h1 id="hero-title">
                         Muqaddas Zaheer Ahmad
                     </h1>
 
                     <h2>
                         AI
-                        <span>•</span>
+                        <span aria-hidden="true">•</span>
                         Machine Learning
-                        <span>•</span>
+                        <span aria-hidden="true">•</span>
                         Python
-                        <span>•</span>
+                        <span aria-hidden="true">•</span>
                         Data Analytics
                     </h2>
 
@@ -242,10 +266,12 @@
                             Contact Me
                         </a>
 
+                        <!-- Resume Download -->
                         <a
                             href="assets/Muqaddas_Zaheer_Ahmad_Resume.pdf"
                             class="btn btn-secondary"
-                            download
+                            download="Muqaddas_Zaheer_Ahmad_Resume.pdf"
+                            type="application/pdf"
                         >
                             Download Resume
                         </a>
@@ -310,12 +336,13 @@
 
 
         <!-- =========================
-             About
+             About Section
         ========================== -->
 
         <section
             class="about-section section"
             id="about"
+            aria-labelledby="about-title"
         >
 
             <div class="container">
@@ -326,8 +353,8 @@
                         About Me
                     </p>
 
-                    <h2>
-                        Learning, Building & Growing
+                    <h2 id="about-title">
+                        Learning, Building &amp; Growing
                     </h2>
 
                     <p>
@@ -372,12 +399,13 @@
 
 
         <!-- =========================
-             Skills
+             Skills Section
         ========================== -->
 
         <section
             class="skills-section section"
             id="skills"
+            aria-labelledby="skills-title"
         >
 
             <div class="container">
@@ -388,7 +416,7 @@
                         My Skills
                     </p>
 
-                    <h2>
+                    <h2 id="skills-title">
                         Technologies I Work With
                     </h2>
 
@@ -410,164 +438,236 @@
                     </div>
 
 
+                    <!-- Python -->
+
                     <div
                         class="skill-orbit-item skill-python"
                         data-skill="Python"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/python.jpg"
-                                    alt="Python"
+                                    alt="Python logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 Python
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- C++ -->
 
                     <div
                         class="skill-orbit-item skill-cpp"
                         data-skill="C++"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/cpp.jpg"
-                                    alt="C++"
+                                    alt="C++ logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 C++
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- SQL -->
 
                     <div
                         class="skill-orbit-item skill-sql"
                         data-skill="SQL"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/sql.jpg"
-                                    alt="SQL"
+                                    alt="SQL logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 SQL
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- pandas -->
 
                     <div
                         class="skill-orbit-item skill-pandas"
                         data-skill="pandas"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/pandas.jpg"
-                                    alt="pandas"
+                                    alt="pandas logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 pandas
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- NumPy -->
 
                     <div
                         class="skill-orbit-item skill-numpy"
                         data-skill="NumPy"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/numpy.jpeg"
-                                    alt="NumPy"
+                                    alt="NumPy logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 NumPy
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- Matplotlib -->
 
                     <div
                         class="skill-orbit-item skill-matplotlib"
                         data-skill="Matplotlib"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/matplotlib.jpg"
-                                    alt="Matplotlib"
+                                    alt="Matplotlib logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 Matplotlib
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- Jupyter -->
 
                     <div
                         class="skill-orbit-item skill-jupyter"
                         data-skill="Jupyter Notebook"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/jupyter.jpg"
-                                    alt="Jupyter Notebook"
+                                    alt="Jupyter Notebook logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 Jupyter
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- Git -->
 
                     <div
                         class="skill-orbit-item skill-git"
                         data-skill="Git"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/git.jpg"
-                                    alt="Git"
+                                    alt="Git logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 Git
                             </span>
+
                         </div>
                     </div>
 
+
+                    <!-- GitHub -->
 
                     <div
                         class="skill-orbit-item skill-github"
                         data-skill="GitHub"
                     >
                         <div class="skill-inner">
+
                             <span class="skill-icon-badge">
+
                                 <img
                                     src="assets/skills/github.jpg"
-                                    alt="GitHub"
+                                    alt="GitHub logo"
+                                    loading="lazy"
                                 >
+
                             </span>
+
                             <span class="skill-label">
                                 GitHub
                             </span>
+
                         </div>
                     </div>
 
@@ -584,12 +684,13 @@
 
 
         <!-- =========================
-             Projects
+             Projects Section
         ========================== -->
 
         <section
             class="projects-section section"
             id="projects"
+            aria-labelledby="projects-title"
         >
 
             <div class="container">
@@ -600,7 +701,7 @@
                         Featured Work
                     </p>
 
-                    <h2>
+                    <h2 id="projects-title">
                         Projects I Have Built
                     </h2>
 
@@ -645,6 +746,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="project-link"
+                                aria-label="Open Rahman AI Student Success Agent live demo"
                             >
                                 Live Demo
                                 <span aria-hidden="true">→</span>
@@ -655,6 +757,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="project-link project-link-secondary"
+                                aria-label="View Rahman AI Student Success Agent on GitHub"
                             >
                                 View on GitHub
                                 <span aria-hidden="true">→</span>
@@ -694,6 +797,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="project-link"
+                                aria-label="Open Muqaddas AI Learning Assistant live demo"
                             >
                                 Live Demo
                                 <span aria-hidden="true">→</span>
@@ -704,6 +808,7 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="project-link project-link-secondary"
+                                aria-label="View Muqaddas AI Learning Assistant on GitHub"
                             >
                                 View on GitHub
                                 <span aria-hidden="true">→</span>
@@ -742,6 +847,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             class="project-link"
+                            aria-label="View On Time, On Point project on GitHub"
                         >
                             View on GitHub
                             <span aria-hidden="true">→</span>
@@ -777,6 +883,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             class="project-link"
+                            aria-label="View Smart Student Result Management System on GitHub"
                         >
                             View on GitHub
                             <span aria-hidden="true">→</span>
@@ -812,6 +919,7 @@
                             target="_blank"
                             rel="noopener noreferrer"
                             class="project-link"
+                            aria-label="View ZZS Cafe Management System on GitHub"
                         >
                             View on GitHub
                             <span aria-hidden="true">→</span>
@@ -822,7 +930,7 @@
                 </div>
 
 
-                <!-- View all projects -->
+                <!-- View All Projects -->
 
                 <div class="section-action">
 
@@ -844,12 +952,13 @@
 
 
         <!-- =========================
-             Experience
+             Experience Section
         ========================== -->
 
         <section
             class="experience-section section"
             id="experience"
+            aria-labelledby="experience-title"
         >
 
             <div class="container">
@@ -860,8 +969,8 @@
                         Experience
                     </p>
 
-                    <h2>
-                        My Learning & Professional Journey
+                    <h2 id="experience-title">
+                        My Learning &amp; Professional Journey
                     </h2>
 
                 </div>
@@ -869,6 +978,8 @@
 
                 <div class="timeline">
 
+
+                    <!-- Experience 01 -->
 
                     <article class="timeline-item">
 
@@ -902,6 +1013,8 @@
                     </article>
 
 
+                    <!-- Experience 02 -->
+
                     <article class="timeline-item">
 
                         <div
@@ -916,11 +1029,11 @@
                             </span>
 
                             <h3>
-                                AI Researcher & Content Creator
+                                AI Researcher &amp; Content Creator
                             </h3>
 
                             <p class="timeline-organization">
-                                Computing & Artificial Intelligence Society
+                                Computing &amp; Artificial Intelligence Society
                             </p>
 
                             <p>
@@ -932,7 +1045,6 @@
 
                     </article>
 
-
                 </div>
 
             </div>
@@ -941,12 +1053,13 @@
 
 
         <!-- =========================
-             Education
+             Education Section
         ========================== -->
 
         <section
             class="education-section section"
             id="education"
+            aria-labelledby="education-title"
         >
 
             <div class="container">
@@ -957,7 +1070,7 @@
                         Education
                     </p>
 
-                    <h2>
+                    <h2 id="education-title">
                         Academic Background
                     </h2>
 
@@ -972,7 +1085,7 @@
                 <div class="education-list">
 
 
-                    <!-- BS -->
+                    <!-- BS Artificial Intelligence -->
 
                     <article class="education-card">
 
@@ -1048,7 +1161,12 @@
                             <p class="education-result">
                                 Marks:
                                 <strong>1053</strong>
-                                <span class="result-separator">•</span>
+
+                                <span
+                                    class="result-separator"
+                                    aria-hidden="true"
+                                >•</span>
+
                                 Grade:
                                 <strong>A</strong>
                             </p>
@@ -1058,7 +1176,7 @@
                     </article>
 
 
-                    <!-- Matric -->
+                    <!-- Matriculation -->
 
                     <article class="education-card">
 
@@ -1091,7 +1209,12 @@
                             <p class="education-result">
                                 Marks:
                                 <strong>982</strong>
-                                <span class="result-separator">•</span>
+
+                                <span
+                                    class="result-separator"
+                                    aria-hidden="true"
+                                >•</span>
+
                                 Grade:
                                 <strong>A</strong>
                             </p>
@@ -1108,12 +1231,13 @@
 
 
         <!-- =========================
-             Achievements
+             Achievements Section
         ========================== -->
 
         <section
             class="achievements-section section"
             id="achievements"
+            aria-labelledby="achievements-title"
         >
 
             <div class="container">
@@ -1124,7 +1248,7 @@
                         Achievements
                     </p>
 
-                    <h2>
+                    <h2 id="achievements-title">
                         Milestones I Am Proud Of
                     </h2>
 
@@ -1134,9 +1258,14 @@
                 <div class="achievement-list">
 
 
+                    <!-- Achievement 01 -->
+
                     <article class="achievement-item">
 
-                        <div class="achievement-icon">
+                        <div
+                            class="achievement-icon"
+                            aria-hidden="true"
+                        >
                             01
                         </div>
 
@@ -1156,9 +1285,14 @@
                     </article>
 
 
+                    <!-- Achievement 02 -->
+
                     <article class="achievement-item">
 
-                        <div class="achievement-icon">
+                        <div
+                            class="achievement-icon"
+                            aria-hidden="true"
+                        >
                             02
                         </div>
 
@@ -1179,7 +1313,6 @@
 
                     </article>
 
-
                 </div>
 
             </div>
@@ -1188,12 +1321,13 @@
 
 
         <!-- =========================
-             Certifications
+             Certifications Section
         ========================== -->
 
         <section
             class="certifications-section section"
             id="certifications"
+            aria-labelledby="certifications-title"
         >
 
             <div class="container">
@@ -1204,7 +1338,7 @@
                         Certifications
                     </p>
 
-                    <h2>
+                    <h2 id="certifications-title">
                         Continuous Learning
                     </h2>
 
@@ -1234,6 +1368,7 @@
 
                         <p class="issuer">
                             DeepLearning.AI / Coursera
+
                             <span class="certificate-date">
                                 June 2026
                             </span>
@@ -1256,6 +1391,7 @@
 
                         <p class="issuer">
                             Google / Coursera
+
                             <span class="certificate-date">
                                 January 2026
                             </span>
@@ -1278,6 +1414,7 @@
 
                         <p class="issuer">
                             Google / Coursera
+
                             <span class="certificate-date">
                                 August 2026
                             </span>
@@ -1300,6 +1437,7 @@
 
                         <p class="issuer">
                             Google
+
                             <span class="certificate-date">
                                 August 2026
                             </span>
@@ -1322,6 +1460,7 @@
 
                         <p class="issuer">
                             Google / Coursera
+
                             <span class="certificate-date">
                                 August 2026
                             </span>
@@ -1344,6 +1483,7 @@
 
                         <p class="issuer">
                             Google / Coursera
+
                             <span class="certificate-date">
                                 January 2026
                             </span>
@@ -1366,6 +1506,7 @@
 
                         <p class="issuer">
                             Google / Coursera
+
                             <span class="certificate-date">
                                 August 2026
                             </span>
@@ -1388,6 +1529,7 @@
 
                         <p class="issuer">
                             Google / Coursera
+
                             <span class="certificate-date">
                                 August 2026
                             </span>
@@ -1410,6 +1552,7 @@
 
                         <p class="issuer">
                             Anthropic Academy
+
                             <span class="certificate-date">
                                 July 2026
                             </span>
@@ -1417,11 +1560,10 @@
 
                     </article>
 
-
                 </div>
 
 
-                <!-- View all certificates -->
+                <!-- View All Certificates -->
 
                 <div class="section-action">
 
@@ -1443,12 +1585,13 @@
 
 
         <!-- =========================
-             Contact
+             Contact Section
         ========================== -->
 
         <section
             class="contact-section section"
             id="contact"
+            aria-labelledby="contact-title"
         >
 
             <div class="container">
@@ -1456,7 +1599,7 @@
                 <div class="contact-grid">
 
 
-                    <!-- Contact information -->
+                    <!-- Contact Information -->
 
                     <div class="contact-content">
 
@@ -1464,7 +1607,7 @@
                             Get In Touch
                         </p>
 
-                        <h2>
+                        <h2 id="contact-title">
                             Let's Connect
                         </h2>
 
@@ -1479,24 +1622,36 @@
                         <div class="contact-links">
 
 
+                            <!-- Email -->
+
                             <a
                                 href="mailto:muqaddaszaheer76@gmail.com"
                                 class="contact-link"
                             >
 
-                                <span class="contact-link-icon">
+                                <span
+                                    class="contact-link-icon"
+                                    aria-hidden="true"
+                                >
                                     @
                                 </span>
 
                                 <span>
-                                    <strong>Email</strong>
+
+                                    <strong>
+                                        Email
+                                    </strong>
+
                                     <small>
                                         muqaddaszaheer76@gmail.com
                                     </small>
+
                                 </span>
 
                             </a>
 
+
+                            <!-- GitHub -->
 
                             <a
                                 href="https://github.com/muqaddaszaheer"
@@ -1505,19 +1660,29 @@
                                 class="contact-link"
                             >
 
-                                <span class="contact-link-icon">
+                                <span
+                                    class="contact-link-icon"
+                                    aria-hidden="true"
+                                >
                                     GH
                                 </span>
 
                                 <span>
-                                    <strong>GitHub</strong>
+
+                                    <strong>
+                                        GitHub
+                                    </strong>
+
                                     <small>
                                         github.com/muqaddaszaheer
                                     </small>
+
                                 </span>
 
                             </a>
 
+
+                            <!-- LinkedIn -->
 
                             <a
                                 href="https://www.linkedin.com/in/muqaddas-zaheer-ahmad-aa59913a7/"
@@ -1526,32 +1691,40 @@
                                 class="contact-link"
                             >
 
-                                <span class="contact-link-icon">
+                                <span
+                                    class="contact-link-icon"
+                                    aria-hidden="true"
+                                >
                                     in
                                 </span>
 
                                 <span>
-                                    <strong>LinkedIn</strong>
+
+                                    <strong>
+                                        LinkedIn
+                                    </strong>
+
                                     <small>
                                         Muqaddas Zaheer Ahmad
                                     </small>
+
                                 </span>
 
                             </a>
-
 
                         </div>
 
                     </div>
 
 
-                    <!-- Contact form -->
+                    <!-- Contact Form -->
 
                     <div class="contact-form-wrapper">
 
                         <form
                             class="contact-form"
                             id="contact-form"
+                            novalidate
                         >
 
                             <div class="form-group">
@@ -1653,7 +1826,7 @@
 
                 <p>
                     © 2026 Muqaddas Zaheer Ahmad.
-                    Built with HTML, CSS & JavaScript.
+                    Built with HTML, CSS &amp; JavaScript.
                 </p>
 
                 <a
