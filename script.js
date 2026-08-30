@@ -1,124 +1,259 @@
-// ========================================
+// =========================================================
 // Muqaddas Zaheer Ahmad — Portfolio
 // Main JavaScript
-// ========================================
+// =========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
     const navigationLinks = document.querySelectorAll(".nav-links a");
     const sections = document.querySelectorAll("main section[id]");
+    const contactForm = document.querySelector("#contact-form");
+    const formNote = document.querySelector("#form-note");
 
-    // ----------------------------------------
-    // Mobile Navigation
-    // ----------------------------------------
+
+    /* =====================================================
+       MOBILE NAVIGATION
+       ===================================================== */
+
+    const closeMenu = () => {
+
+        if (!menuToggle || !navLinks) {
+            return;
+        }
+
+        navLinks.classList.remove("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+    };
+
 
     if (menuToggle && navLinks) {
+
         menuToggle.addEventListener("click", (event) => {
+
             event.stopPropagation();
 
-            const isOpen = navLinks.classList.toggle("active");
+            const isOpen =
+                navLinks.classList.toggle("active");
 
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
             menuToggle.setAttribute(
                 "aria-label",
-                isOpen ? "Close navigation menu" : "Open navigation menu"
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
             );
+
         });
 
-        // Close mobile menu after clicking a navigation link
+
         navigationLinks.forEach((link) => {
+
             link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
+                closeMenu();
             });
+
         });
 
-        // Close mobile menu when clicking outside
+
         document.addEventListener("click", (event) => {
+
+            const clickedInsideMenu =
+                navLinks.contains(event.target);
+
+            const clickedToggle =
+                menuToggle.contains(event.target);
+
             if (
-                !navLinks.contains(event.target) &&
-                !menuToggle.contains(event.target)
+                !clickedInsideMenu &&
+                !clickedToggle
             ) {
-                navLinks.classList.remove("active");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
+                closeMenu();
             }
+
         });
 
-        // Close menu when pressing Escape
+
         document.addEventListener("keydown", (event) => {
+
             if (event.key === "Escape") {
-                navLinks.classList.remove("active");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
-
-                menuToggle.focus();
+                closeMenu();
             }
-        });
-    }
 
-    // ----------------------------------------
-    // Active Navigation Link While Scrolling
-    // ----------------------------------------
-
-    if (sections.length && navigationLinks.length) {
-        const updateActiveLink = () => {
-            const scrollPosition = window.scrollY + 160;
-            let currentSection = sections[0].id;
-
-            sections.forEach((section) => {
-                if (scrollPosition >= section.offsetTop) {
-                    currentSection = section.id;
-                }
-            });
-
-            navigationLinks.forEach((link) => {
-                const target = link.getAttribute("href");
-
-                if (target === `#${currentSection}`) {
-                    link.classList.add("active");
-                } else {
-                    link.classList.remove("active");
-                }
-            });
-        };
-
-        window.addEventListener("scroll", updateActiveLink, {
-            passive: true
         });
 
-        window.addEventListener("resize", updateActiveLink);
-
-        updateActiveLink();
     }
 
-    // ----------------------------------------
-    // Close Mobile Menu When Resizing
-    // ----------------------------------------
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 760 && menuToggle && navLinks) {
-            navLinks.classList.remove("active");
+    /* =====================================================
+       ACTIVE NAVIGATION LINK
+       ===================================================== */
 
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
+    const updateActiveLink = () => {
+
+        if (
+            !sections.length ||
+            !navigationLinks.length
+        ) {
+            return;
         }
-    });
+
+        const scrollPosition =
+            window.scrollY + 170;
+
+        let currentSection =
+            sections[0].id;
+
+        sections.forEach((section) => {
+
+            if (
+                scrollPosition >=
+                section.offsetTop
+            ) {
+                currentSection =
+                    section.id;
+            }
+
+        });
+
+
+        navigationLinks.forEach((link) => {
+
+            const target =
+                link.getAttribute("href");
+
+            link.classList.toggle(
+                "active",
+                target === `#${currentSection}`
+            );
+
+        });
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveLink,
+        {
+            passive: true
+        }
+    );
+
+    window.addEventListener(
+        "resize",
+        updateActiveLink
+    );
+
+    updateActiveLink();
+
+
+    /* =====================================================
+       CONTACT FORM
+       ===================================================== */
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+                const name =
+                    document.querySelector("#name").value.trim();
+
+                const email =
+                    document.querySelector("#email").value.trim();
+
+                const message =
+                    document.querySelector("#message").value.trim();
+
+
+                if (
+                    !name ||
+                    !email ||
+                    !message
+                ) {
+
+                    if (formNote) {
+                        formNote.textContent =
+                            "Please complete all fields.";
+                    }
+
+                    return;
+                }
+
+
+                const subject =
+                    encodeURIComponent(
+                        `Portfolio message from ${name}`
+                    );
+
+                const body =
+                    encodeURIComponent(
+                        `Name: ${name}\n\n` +
+                        `Email: ${email}\n\n` +
+                        `Message:\n${message}`
+                    );
+
+
+                const mailto =
+                    `mailto:muqaddaszaheer76@gmail.com` +
+                    `?subject=${subject}` +
+                    `&body=${body}`;
+
+
+                if (formNote) {
+
+                    formNote.textContent =
+                        "Opening your email app...";
+
+                }
+
+
+                window.location.href =
+                    mailto;
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CLOSE MENU AFTER RESIZING TO DESKTOP
+       ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 850
+            ) {
+                closeMenu();
+            }
+
+        }
+    );
+
 });
