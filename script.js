@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
+
     const navigationLinks = document.querySelectorAll(
         '.nav-links a[href^="#"]'
     );
@@ -314,8 +315,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Contact Form
     // ========================================
     // GitHub Pages cannot process a form by itself.
-    // This version validates the form and opens the
-    // user's email client with the message.
+    // This version validates the form and opens
+    // Gmail directly in the browser.
 
     if (contactForm) {
         contactForm.addEventListener(
@@ -377,17 +378,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     `Email: ${email}\n\n` +
                     `Message:\n${message}`;
 
-                const mailtoUrl =
-                    `mailto:muqaddaszaheer76@gmail.com` +
-                    `?subject=${encodeURIComponent(subject)}` +
+                const gmailUrl =
+                    "https://mail.google.com/mail/" +
+                    "?view=cm" +
+                    "&fs=1" +
+                    "&tf=1" +
+                    "&to=muqaddaszaheer76@gmail.com" +
+                    `&su=${encodeURIComponent(subject)}` +
                     `&body=${encodeURIComponent(body)}`;
 
                 showFormStatus(
-                    "Opening your email application...",
+                    "Opening Gmail...",
                     "success"
                 );
 
-                window.location.href = mailtoUrl;
+                window.location.href = gmailUrl;
             }
         );
     }
@@ -427,9 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ========================================
 
     window.addEventListener("resize", () => {
-        if (
-            window.innerWidth > 900
-        ) {
+        if (window.innerWidth > 900) {
             closeMobileMenu();
         }
     });
@@ -457,5 +460,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // ========================================
 
     closeMobileMenu();
-
 });
