@@ -21,7 +21,7 @@ This portfolio represents my learning journey in Artificial Intelligence and hig
 - **Data Analytics:** pandas, NumPy, Data Cleaning, EDA, Statistical Analysis
 - **Machine Learning:** Regression, Classification, Machine Learning Fundamentals
 - **Artificial Intelligence:** AI Agents, Generative AI, Prompt Engineering, Hugging Face, API Integration
-- **Visualization:** Matplotlib, Power BI
+- **Data Visualization:** Matplotlib, Power BI
 - **Tools:** Jupyter Notebook, VS Code, Git, GitHub
 
 ## Experience
@@ -53,12 +53,12 @@ Professional learning and certifications in:
 
 ## Connect With Me
 
-- **GitHub:** https://github.com/muqaddaszaheer
-- **LinkedIn:** https://www.linkedin.com/in/muqaddas-zaheer-ahmad-aa59913a7/
+- **GitHub:** [muqaddaszaheer](https://github.com/muqaddaszaheer)
+- **LinkedIn:** [Muqaddas Zaheer Ahmad](https://www.linkedin.com/in/muqaddas-zaheer-ahmad-aa59913a7/)
 
 ## Live Portfolio
 
-**Portfolio:** https://muqaddaszaheer.github.io/muqaddas-portfolio/
+**[Visit my portfolio](https://muqaddaszaheer.github.io/muqaddas-portfolio/)**
 
 ---
 
