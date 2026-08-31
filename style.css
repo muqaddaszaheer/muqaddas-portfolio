@@ -794,6 +794,18 @@ button {
     color: var(--accent);
 }
 
+.section-action {
+    text-align: center;
+    margin-top: 44px;
+}
+
+.certificate-date {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--text-faint);
+}
+
 /* ========================================================
    Experience Timeline
    ======================================================== */
